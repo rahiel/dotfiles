@@ -1,0 +1,16 @@
+#!/bin/bash
+# synclient -l, man synaptics
+synclient ClickPad=1
+
+# Look at the values of the Edges in synclient output
+synclient RightButtonAreaLeft=600
+synclient RightButtonAreaRight=0
+synclient RightButtonAreaTop=600
+synclient RightButtonAreaBottom=0
+
+# tapping!
+synclient TapButton1=1
+synclient TapButton2=2
+
+# Horizontal scrolling
+synclient HorizTwoFingerScroll=1

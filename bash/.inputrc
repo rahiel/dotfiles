@@ -1,0 +1,29 @@
+$include /etc/inputrc
+
+# up/down match history command
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+"\C-n": history-search-backward
+"\C-p": history-search-forward
+
+# pastejacking protection
+set enable-bracketed-paste on
+
+TAB: menu-complete
+# shift-tab
+"\e[Z": menu-complete-backward
+# show matches if multiple completions candidates
+set show-all-if-ambiguous on
+# show matches vertically
+set completion-display-width 1
+# colour possible completions
+set colored-stats on
+# colour the commong prefix of possible completions
+set colored-completion-prefix on
+set completion-ignore-case on
+# _ and - are same for completions
+set completion-map-case on
+# history expansion
+$if Bash
+  Space: magic-space
+$endif

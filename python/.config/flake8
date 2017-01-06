@@ -1,0 +1,5 @@
+[flake8]
+# E302: Expected 2 blank lines, found 0
+# E731: E731 do not assign a lambda expression, use a def
+ignore = E302, E731
+max-line-length = 120

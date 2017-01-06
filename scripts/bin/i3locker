@@ -1,0 +1,10 @@
+#!/bin/bash
+sleep 0.2
+# http://plankenau.com/blog/post/gaussianlock
+scrot /tmp/screenshot.png
+convert /tmp/screenshot.png -blur 0x5 /tmp/screenshotblur.png
+rm /tmp/screenshot.png
+
+# Add a small delay to prevent suspend races
+# https://bugs.launchpad.net/ubuntu/+source/unity-2d/+bug/830348
+i3lock -i /tmp/screenshotblur.png && sleep 1

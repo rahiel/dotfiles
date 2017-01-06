@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name=Temporary Chromium Profile
+GenericName=Web Browser
+Comment=Access the Internet
+Exec=firejail /usr/bin/chromium --temp-profile %U
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=chromium.png
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml_xml;application/x-mimearchive;x-scheme-handler/http;x-scheme-handler/https;
+StartupWMClass=chromium
+StartupNotify=true
