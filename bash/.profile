@@ -30,3 +30,6 @@ export PATH="$HOME/.npm-global/bin:$PATH"
 # cargo / rust
 export PATH="$HOME/.cargo/bin:$PATH"
 export RUST_SRC_PATH="$HOME/Code/rust/src"
+
+# gem
+export PATH="$HOME/.gem/ruby/2.3.0/bin:$PATH"

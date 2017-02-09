@@ -58,7 +58,7 @@ alias binds="bind -P | grep 'can be'"
 alias dd='dd status=progress'
 alias netrestart="sudo systemctl restart network-manager.service"
 alias nocaps='setxkbmap -option ctrl:nocaps'
-alias keys='xmodmap ~/.Xmodmap'
+alias keys='xmodmap ~/.config/xmodmaprc'
 alias pls='sudo $(fc -nl -1)'
 alias untar='tar xvf'
 alias webserver='python3 -m http.server'
