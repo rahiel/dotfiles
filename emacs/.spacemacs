@@ -488,6 +488,9 @@ you should place your code here."
   (global-set-key (kbd "C-c i") 'helm-semantic-or-imenu)
   (global-set-key (kbd "C-c o") 'helm-occur)
 
+  ;; magit
+  (setq magit-diff-refine-hunk 'all)
+
   ;; rainbow mode, colourize hex colour names in buffers
   (add-hook 'html-mode-hook 'rainbow-mode)
   (add-hook 'css-mode-hook 'rainbow-mode)
