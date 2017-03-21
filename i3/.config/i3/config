@@ -164,14 +164,15 @@ bindsym $mod+F8 exec emacsclient -nc -e '(find-file "~/Sync/Notes/todo.org")'
 # adapted from: https://wiki.archlinux.org/index.php/I3#Shutdown.2C_reboot.2C_lock_screen
 set $Locker ~/bin/i3locker
 
-set $mode_system System (l)ock, (e) logout, (s)uspend, (h)ibernate, (r)eboot, (Shift+s) shutdown, (o) screen off
+set $mode_system System (l)ock, (e) logout, (s)uspend, (h)ibernate, (r)eboot, (p)oweroff, screen (o)ff
 mode "$mode_system" {
     bindsym l exec --no-startup-id $Locker, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
     bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl suspend, mode "default"
     bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+    bindsym p exec --no-startup-id systemctl poweroff -i, mode "default"
     bindsym o exec --no-startup-id xset dpms force off, mode "default"
 
     # back to normal: Enter or Escape

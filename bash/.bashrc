@@ -60,9 +60,9 @@ export EDITOR='emacsclient -c'
 
 exit_prompt() {
     if [[ $EXIT_STATUS == 0 ]]; then
-        printf "\e[32;1mλ\e[m"
+        printf "\[\e[32;1m\]λ\[\e[m\]"
     else
-        printf "\e[38;5;161;1mλ\e[m"
+        printf "\[\e[38;5;161;1m\]λ\[\e[m\]"
     fi
 }
 # set this variable first in PROMPT_COMMAND, because $? doesn't work reliably
