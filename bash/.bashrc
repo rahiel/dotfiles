@@ -98,9 +98,8 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # z jumping
 . ~/bin/z.sh
 
-# hstr
-export HH_CONFIG=hicolor
-bind '"\C-r": "\C-ahh -- \C-j"'
+# fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # autoenv
 source ~/.local/bin/activate.sh
