@@ -13,14 +13,14 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-# font pango:monospace 8
+font pango: Terminus, FontAwesome, 12px
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 # font pango:DejaVu Sans Mono 9
 
 # Before i3 v4.8, we used to recommend this one as the default:
-font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, its unicode glyph coverage is limited, the old
 # X core fonts rendering does not support right-to-left and this being a bitmap
@@ -156,7 +156,7 @@ bar {
 bindsym $mod+m exec emacsclient -c
 bindsym $mod+n exec thunar
 bindsym $mod+Shift+f exec firejail firefox
-bindsym $mod+Shift+i exec firejail icedove
+bindsym $mod+Shift+i exec firejail thunderbird
 bindsym $mod+Shift+t exec firejail ~/Documents/Telegram/Telegram
 bindsym $mod+F8 exec emacsclient -nc -e '(find-file "~/Sync/Notes/todo.org")'
 
@@ -185,14 +185,13 @@ bindsym $mod+Pause mode "$mode_system"
 # bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -time 100 -steps 10 -inc 5
 # bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -time 100 -steps 10 -dec 5
 
-# volume with pulseaudio-utils
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ '+5%'
-# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ '-5%'
-# bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-
-# alsa volume
+# volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ '+5%'
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ '-5%'
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym $mod+Prior exec --no-startup-id amixer -c 1 sset Master '5%+'
 bindsym $mod+Next exec --no-startup-id amixer -c 1 sset Master '5%-'
+bindsym $mod+End exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 exec --no-startup-id ~/bin/set-wallpaper
 
@@ -203,4 +202,3 @@ exec --no-startup-id compton -b --backend glx --vsync opengl-swc
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id firejail dropbox start -i
 exec --no-startup-id unclutter
-exec --no-startup-id sleep 66 && volumeicon
