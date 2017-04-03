@@ -7,6 +7,7 @@ emacs --daemon
 xmodmap ~/.config/xmodmaprc
 numlockx on
 bluetooth off
+python3 ~/bin/emacs-bindings.py
 sleep 2.5
 
 # turn off wifi when wired

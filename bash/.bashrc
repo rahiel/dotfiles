@@ -58,6 +58,7 @@ export EDITOR='emacsclient -c'
 #     ;;
 # esac
 
+# all non-printing characters in the prompt should be between \[ and \]
 exit_prompt() {
     if [[ $EXIT_STATUS == 0 ]]; then
         printf "\[\e[32;1m\]λ\[\e[m\]"
