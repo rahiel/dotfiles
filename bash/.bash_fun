@@ -50,21 +50,24 @@ alias latexmk='latexmk -interaction=nonstopmode -pvc -pdf -pdflatex="pdflatex -s
 alias latexmk_err='latexmk -pvc -pdf -pdflatex="pdflatex -shell-escape %O %S"'
 alias pdflatex='pdflatex -shell-escape'
 
-alias debup='sudo apt update && sudo apt full-upgrade && sudo apt --purge autoremove && sudo apt autoclean'
-alias em='emacsclient -c -n'
-alias e='emacsclient -nw'
-alias eq='emacs -Q'
 alias binds="bind -P | grep 'can be'"
 alias dd='dd status=progress'
+alias debup='sudo apt update && sudo apt full-upgrade && sudo apt --purge autoremove && sudo apt autoclean'
+alias e='emacsclient -nw'
+alias em='emacsclient -c -n'
+alias eq='emacs -Q'
 alias j='z'
+alias keys='xmodmap ~/.config/xmodmaprc'
 alias netrestart="sudo systemctl restart network-manager.service"
 alias nocaps='setxkbmap -option ctrl:nocaps'
-alias keys='xmodmap ~/.config/xmodmaprc'
 alias pls='sudo $(fc -nl -1)'
+alias rg='rg -S'
 alias untar='tar xvf'
 alias webserver='python3 -m http.server'
 alias wget='wget -c'
 alias xdaliclock='xdaliclock -24 -builtin3 -fullscreen'
+
+eval "$(hub alias -s)"
 
 debin () { dpkg --get-selections | grep "$1"; }
 calc () { bc -l <<< "$@"; }
