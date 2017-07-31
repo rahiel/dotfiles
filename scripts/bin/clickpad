@@ -1,4 +1,5 @@
 #!/bin/bash
+# Depends (apt): xserver-xorg-input-synaptics
 # synclient -l, man synaptics
 synclient ClickPad=1
 

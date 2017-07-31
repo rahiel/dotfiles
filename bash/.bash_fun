@@ -69,6 +69,10 @@ alias xdaliclock='xdaliclock -24 -builtin3 -fullscreen'
 
 eval "$(hub alias -s)"
 
+alias fzf_update='cd ~/.fzf && git pull && ./install --key-bindings --completion --no-update-rc && cd -'
+alias npm_update='npm -g update'
+alias pip_upgrade='pip3 install --upgrade -r ~/Sync/dotfiles/requirements.txt'
+
 debin () { dpkg --get-selections | grep "$1"; }
 calc () { bc -l <<< "$@"; }
 ffind () { find . -iname "*$@*"; }

@@ -492,8 +492,7 @@ you should place your code here."
     (interactive "r")
     (isearch-exit)
     (goto-char isearch-other-end))
-  (define-key isearch-mode-map (kbd "<return>") 'isearch-exit-other-end)
-  (define-key isearch-mode-map (kbd "C-<return>") 'isearch-exit)  ; default behaviour
+  (define-key isearch-mode-map (kbd "C-<return>") 'isearch-exit-other-end)
 
   ;; frame title, from prelude
   (setq frame-title-format

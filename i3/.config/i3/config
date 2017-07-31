@@ -39,6 +39,8 @@ bindsym $mod+Shift+q kill
 bindsym $mod+Shift+d exec --no-startup-id dmenu_run -i
 bindsym $mod+d exec j4-dmenu-desktop --dmenu="dmenu -i"
 
+focus_follows_mouse no
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -160,6 +162,9 @@ bindsym $mod+Shift+i exec firejail thunderbird
 bindsym $mod+Shift+t exec firejail ~/Documents/Telegram/Telegram
 bindsym $mod+F8 exec emacsclient -nc -e '(find-file "~/Sync/Notes/todo.org")'
 
+assign [class="Firefox"] → 1
+assign [class="Thunderbird"] → 10
+
 # shutdown/lock
 # adapted from: https://wiki.archlinux.org/index.php/I3#Shutdown.2C_reboot.2C_lock_screen
 set $Locker ~/bin/i3locker
@@ -171,7 +176,7 @@ mode "$mode_system" {
     bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
     bindsym Shift+s exec --no-startup-id systemctl suspend, mode "default"
     bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Shift+p exec --no-startup-id systemctl poweroff -i, mode "default"
     bindsym o exec --no-startup-id xset dpms force off, mode "default"
 
