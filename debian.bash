@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
-IFS=$'\n\t'
 
 if [[ $(id -u) -eq 0 ]]; then
     echo "Don't run this as root"
@@ -11,14 +10,14 @@ fi
 sudo bash -c "echo \"$USER  ALL=(ALL) NOPASSWD:ALL\" > /etc/sudoers.d/passwordless"
 
 SOURCES=$(cat << EOF
-deb http://httpredir.debian.org/debian stretch main contrib non-free
-# deb-src http://httpredir.debian.org/debian stretch main contrib non-free
+deb http://httpredir.debian.org/debian buster main contrib non-free
+# deb-src http://httpredir.debian.org/debian buster main contrib non-free
 
-deb http://httpredir.debian.org/debian stretch-updates main contrib non-free
-# deb-src http://httpredir.debian.org/debian stretch-updates main contrib non-free
+deb http://httpredir.debian.org/debian buster-updates main contrib non-free
+# deb-src http://httpredir.debian.org/debian buster-updates main contrib non-free
 
-deb http://security.debian.org/ stretch/updates main contrib non-free
-# deb-src http://security.debian.org/ stretch/updates main contrib non-free
+deb http://security.debian.org/ buster/updates main contrib non-free
+# deb-src http://security.debian.org/ buster/updates main contrib non-free
 
 deb http://httpredir.debian.org/debian unstable main contrib non-free
 EOF
@@ -27,7 +26,7 @@ sudo bash -c "echo \"$SOURCES\" > /etc/apt/sources.list"
 
 PREFERENCES=$(cat <<EOF
 Package: *
-Pin: release n=stretch
+Pin: release n=buster
 Pin-Priority: 900
 
 Package: *
@@ -42,7 +41,6 @@ sudo apt full-upgrade -y
 sudo apt install -y --purge --reinstall task-xfce-desktop firefox firefox-esr-
 
 sudo apt install -y \
-     apt-transport-https \
      bsdgames \
      cdparanoia \
      checkinstall \
@@ -85,6 +83,7 @@ sudo apt install -y \
      strace \
      syncthing \
      task-print-server \
+     telegram-desktop \
      thunar-dropbox-plugin \
      thunderbird xul-ext-compactheader xul-ext-torbirdy enigmail gnupg-curl \
      tor torbrowser-launcher \
@@ -101,7 +100,7 @@ sudo apt install -y \
 
 sudo apt install -y --no-install-recommends \
      devscripts \
-     firejail \
+     firejail firejail-profiles \
      mat libimage-exiftool-perl \
      sagemath
 
@@ -111,7 +110,6 @@ sudo apt install -y --no-install-recommends \
      python-pygments \
      texlive \
      texlive-generic-recommended \
-     texlive-math-extra \
      texlive-publishers \
      texlive-science \
      texlive-xetex
@@ -142,7 +140,7 @@ sudo apt install -y \
 
 # Python Science
 sudo apt install -y \
-     ipython3-notebook \
+     jupyter-notebook \
      python3-matplotlib \
      python3-numpy \
      python3-pandas \
@@ -171,8 +169,8 @@ if ! grep -q apparmor /etc/default/grub; then
     sudo perl -pi -e 's,GRUB_CMDLINE_LINUX="(.*)"$,GRUB_CMDLINE_LINUX="$1 apparmor=1 security=apparmor",' /etc/default/grub
 fi
 # Disable AppArmor for Thunderbird
-sudo ln -s /etc/apparmor.d/usr.bin.thunderbird /etc/apparmor.d/disable
-sudo apparmor_parser -R /etc/apparmor.d/usr.bin.thunderbird
+sudo ln -sf /etc/apparmor.d/usr.bin.thunderbird /etc/apparmor.d/disable
+sudo apparmor_parser -R /etc/apparmor.d/usr.bin.thunderbird || :
 
 # Firejail
 wget https://github.com/rahiel/firectl/releases/download/1.1.0/firectl_1.1.0-1_all.deb -O /tmp/firectl.deb
@@ -234,14 +232,20 @@ npm install -g --prefix ~/.npm-global/ \
 
 CRATES="pwds racer ripgrep"
 for crate in $CRATES; do
-    cargo install $crate
+    cargo install -f $crate
 done
 
 gem install --user-install --no-document fpm
 
 # fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+if [[ -d ~/.fzf ]]; then
+    cd ~/.fzf && git pull && cd -
+else
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+fi
 ~/.fzf/install --key-bindings --completion --no-update-rc
 
 # Spacemacs
-git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+if [[ ! -d ~/.emacs.d ]]; then
+    git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+fi

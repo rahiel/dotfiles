@@ -159,7 +159,7 @@ bindsym $mod+m exec emacsclient -c
 bindsym $mod+n exec thunar
 bindsym $mod+Shift+f exec firejail firefox
 bindsym $mod+Shift+i exec firejail thunderbird
-bindsym $mod+Shift+t exec firejail ~/Documents/Telegram/Telegram
+bindsym $mod+Shift+t exec firejail telegram-desktop
 bindsym $mod+F8 exec emacsclient -nc -e '(find-file "~/Sync/Notes/todo.org")'
 
 assign [class="Firefox"] → 1
