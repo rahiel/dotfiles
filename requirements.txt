@@ -1,3 +1,4 @@
 autoenv
+emacs-keys-everywhere
 telegram-send
 virtualenvwrapper
