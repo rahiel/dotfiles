@@ -52,7 +52,7 @@ alias pdflatex='pdflatex -shell-escape'
 
 alias binds="bind -P | grep 'can be'"
 alias dd='dd status=progress'
-alias debup='sudo apt update && sudo apt full-upgrade && sudo apt --purge autoremove && sudo apt autoclean'
+alias debup='sudo apt update && sudo apt full-upgrade && sudo apt --purge autoremove'
 alias e='emacsclient -nw'
 alias em='emacsclient -c -n'
 alias eq='emacs -Q'

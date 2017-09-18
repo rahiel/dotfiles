@@ -57,6 +57,7 @@ sudo apt install -y \
      gnuplot \
      gparted \
      htop \
+     hugo \
      imagemagick \
      jpegoptim \
      jq \
@@ -77,6 +78,7 @@ sudo apt install -y \
      qrencode \
      redshift-gtk \
      ricochet-im \
+     rsync \
      scrot \
      shellcheck \
      stow \
@@ -130,6 +132,7 @@ sudo apt install -y \
      flake8 \
      ipython3 \
      isort \
+     mypy \
      pypy pypy-dev \
      python2.7-doc \
      python3-doc \
@@ -158,6 +161,9 @@ sudo apt install -y --no-install-recommends hlint
 
 # Rust
 sudo apt install -y rustc rust-doc cargo
+
+# Java
+sudo apt install -y default-jdk
 
 # Ruby
 sudo apt install -y ruby ruby-dev rubygems

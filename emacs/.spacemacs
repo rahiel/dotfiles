@@ -347,6 +347,7 @@ you should place your code here."
   (global-set-key (kbd "H-a") 'align-regexp)
   (global-set-key (kbd "H-w") 'whitespace-cleanup)
   (global-set-key (kbd "H-s") 'sort-lines)
+  (global-set-key (kbd "H-e") 'spacemacs/shell-pop-eshell)
   ;; quick moving, from: http://whattheemacsd.com/key-bindings.el-02.html
   (global-set-key (kbd "C-S-n")
                   (lambda ()
