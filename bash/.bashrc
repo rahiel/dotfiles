@@ -44,8 +44,6 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-export PAGER=most
-# export MANPAGER=most
 export EDITOR='emacsclient -c'
 
 ## default prompt
@@ -85,19 +83,29 @@ GIT_PS1_SHOWCOLORHINTS=1
 PROMPT_COMMAND=$PROMPT_COMMAND'; printf "\e]0;${USER}@${HOSTNAME%%.*}: ${PWD}\a"'
 
 # enable color support of ls
+LS_COLORS=~/.local/LS_COLORS/LS_COLORS
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    test -r $LS_COLORS && eval "$(dircolors -b $LS_COLORS)" || eval "$(dircolors -b)"
 fi
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# less colors, from: https://wiki.archlinux.org/index.php/Color_output_in_console#less
+export LESS_TERMCAP_mb=$'\e[1;31m'     # begin bold
+export LESS_TERMCAP_md=$'\e[1;36m'     # begin blink
+export LESS_TERMCAP_me=$'\e[0m'        # reset bold/blink
+export LESS_TERMCAP_so=$'\e[01;44;33m' # begin reverse video
+export LESS_TERMCAP_se=$'\e[0m'        # reset reverse video
+export LESS_TERMCAP_us=$'\e[1;32m'     # begin underline
+export LESS_TERMCAP_ue=$'\e[0m'        # reset underline
 
 # source other files
 . ~/.bash_fun
 . ~/.bash_priv
 
 # z jumping
-. ~/bin/z.sh
+. ~/.local/z/z.sh
 
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

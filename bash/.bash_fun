@@ -1,10 +1,8 @@
 # -*- mode: shell-script; -*-
 
-# colours
-alias ls='ls --color=auto'
+# colors
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
-
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -16,10 +14,14 @@ alias mv='mv -iv'
 alias mkdir='mkdir -p -v'
 alias rmdir='rmdir -p -v'
 
+# ls
+alias ls='ls --color=always --human-readable --classify --time-style=long-iso'
 alias l='ls -l'
-alias la='ls -a'
-alias ll='ls -la'
-alias ls='exa'
+alias la='ls -A'
+alias ll='ls -lA'
+
+# less options
+export LESS='--ignore-case --status-column --LONG-PROMPT --RAW-CONTROL-CHARS --HILITE-UNREAD --window=-4 --shift 1'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -52,7 +54,6 @@ alias pdflatex='pdflatex -shell-escape'
 
 alias binds="bind -P | grep 'can be'"
 alias dd='dd status=progress'
-alias debup='sudo apt update && sudo apt full-upgrade && sudo apt --purge autoremove'
 alias e='emacsclient -nw'
 alias em='emacsclient -c -n'
 alias eq='emacs -Q'
@@ -69,7 +70,9 @@ alias xdaliclock='xdaliclock -24 -builtin3 -fullscreen'
 
 eval "$(hub alias -s)"
 
-alias fzf_update='cd ~/.fzf && git pull && ./install --key-bindings --completion --no-update-rc && cd -'
+alias debup='sudo apt update && sudo apt full-upgrade && sudo apt --purge autoremove'
+alias fzf_update='cd ~/.local/fzf && git pull && ./install --key-bindings --completion --no-update-rc && cd -'
+alias z_update='cd ~/.local/z && git pull && cd -'
 alias npm_update='npm -g update'
 alias pip_upgrade='pip3 install --upgrade -r ~/Sync/dotfiles/requirements.txt'
 

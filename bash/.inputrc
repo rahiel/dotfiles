@@ -23,6 +23,8 @@ set colored-completion-prefix on
 set completion-ignore-case on
 # _ and - are same for completions
 set completion-map-case on
+# complete symlinked directories with a /
+set mark-symlinked-directories on
 # history expansion
 $if Bash
   Space: magic-space

@@ -68,7 +68,6 @@ sudo apt install -y \
      lintian \
      magic-wormhole \
      mosh \
-     most \
      mpv \
      nautilus-dropbox \
      ntfs-3g \
@@ -244,12 +243,20 @@ done
 gem install --user-install --no-document fpm
 
 # fzf
-if [[ -d ~/.fzf ]]; then
-    cd ~/.fzf && git pull && cd -
-else
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+if [[ ! -d ~/.local/fzf ]]; then
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.local/fzf
 fi
-~/.fzf/install --key-bindings --completion --no-update-rc
+~/.local/fzf/install --key-bindings --completion --no-update-rc
+
+# z
+if [[ ! -d ~/.local/z ]]; then
+    git clone https://github.com/rupa/z.git ~/.local/z
+fi
+
+# LS_COLORS
+if [[ ! -d ~/.local/LS_COLORS ]]; then
+    git clone https://github.com/trapd00r/LS_COLORS.git ~/.local/LS_COLORS
+fi
 
 # Spacemacs
 if [[ ! -d ~/.emacs.d ]]; then
