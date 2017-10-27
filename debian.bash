@@ -235,7 +235,7 @@ npm install -g --prefix ~/.npm-global/ \
     typescript \
     webpack
 
-CRATES="pwds racer ripgrep"
+CRATES="pwds racer ripgrep fd-find"
 for crate in $CRATES; do
     cargo install -f $crate
 done
