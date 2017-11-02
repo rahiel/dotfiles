@@ -168,7 +168,7 @@ sudo apt install -y default-jdk
 sudo apt install -y ruby ruby-dev rubygems
 
 # AppArmor
-sudo apt -y install apparmor apparmor-profiles apparmor-utils
+sudo apt -y install apparmor apparmor-profiles apparmor-utils apparmor-notify
 # https://bugs.debian.org/702030
 if ! grep -q apparmor /etc/default/grub; then
     sudo perl -pi -e 's,GRUB_CMDLINE_LINUX="(.*)"$,GRUB_CMDLINE_LINUX="$1 apparmor=1 security=apparmor",' /etc/default/grub
@@ -176,6 +176,9 @@ fi
 # Disable AppArmor for Thunderbird
 sudo ln -sf /etc/apparmor.d/usr.bin.thunderbird /etc/apparmor.d/disable
 sudo apparmor_parser -R /etc/apparmor.d/usr.bin.thunderbird || :
+
+# grant user read permissions for many logs in /var/log/
+sudo adduser "$USER" adm
 
 # Firejail
 wget https://github.com/rahiel/firectl/releases/download/1.1.0/firectl_1.1.0-1_all.deb -O /tmp/firectl.deb
