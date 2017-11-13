@@ -69,8 +69,7 @@ alias webserver='python3 -m http.server'
 alias wget='wget -c'
 alias xdaliclock='xdaliclock -24 -builtin3 -fullscreen'
 
-eval "$(hub alias -s)"
-
+# updates
 alias debup='sudo apt update && sudo apt full-upgrade && sudo apt --purge autoremove'
 alias fzf_update='cd ~/.local/fzf && git pull && ./install --key-bindings --completion --no-update-rc && cd -'
 alias z_update='cd ~/.local/z && git pull && cd -'

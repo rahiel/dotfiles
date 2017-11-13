@@ -80,6 +80,7 @@ sudo apt install -y \
      rsync \
      scrot \
      shellcheck \
+     snapd \
      stow \
      strace \
      syncthing \
@@ -196,6 +197,20 @@ sudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo ufw allow 22000/tcp && sudo ufw allow 21027/udp # Syncthing
 sudo ufw enable
+
+# signal-desktop
+curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
+echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee /etc/apt/sources.list.d/signal-xenial.list
+sudo apt update && sudo apt install -y signal-desktop
+
+# brave browser
+curl -s https://s3-us-west-2.amazonaws.com/brave-apt/keys.asc | sudo apt-key add -
+echo "deb [arch=amd64] https://s3-us-west-2.amazonaws.com/brave-apt jessie main" | sudo tee /etc/apt/sources.list.d/brave-jessie.list
+sudo apt update && sudo apt install -y brave
+
+# enable user namespaces (https://superuser.com/questions/1094597/enable-user-namespaces-in-debian-kernel)
+echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/00-local-userns.conf
+sudo sysctl kernel.unprivileged_userns_clone=1
 
 # Laptop
 if dpkg --get-selections | grep "^task-laptop[[:space:]]*install$" &>/dev/null; then
