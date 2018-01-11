@@ -7,7 +7,7 @@ if [[ $(id -u) -eq 0 ]]; then
 fi
 
 # passwordless sudo
-sudo bash -c "echo \"$USER  ALL=(ALL) NOPASSWD:ALL\" > /etc/sudoers.d/passwordless"
+echo "$USER  ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/passwordless
 
 SOURCES=$(cat << EOF
 deb http://httpredir.debian.org/debian buster main contrib non-free
@@ -22,7 +22,7 @@ deb http://security.debian.org/ buster/updates main contrib non-free
 deb http://httpredir.debian.org/debian unstable main contrib non-free
 EOF
        )
-sudo bash -c "echo \"$SOURCES\" > /etc/apt/sources.list"
+echo "$SOURCES" | sudo tee /etc/apt/sources.list
 
 PREFERENCES=$(cat <<EOF
 Package: *
@@ -34,13 +34,15 @@ Pin: release a=unstable
 Pin-Priority: 800
 EOF
            )
-sudo bash -c "echo \"$PREFERENCES\" > /etc/apt/preferences"
+echo "$PREFERENCES" | sudo tee /etc/apt/preferences
 
 sudo apt update
 sudo apt full-upgrade -y
 sudo apt install -y --purge --reinstall task-xfce-desktop firefox firefox-esr-
 
 sudo apt install -y \
+     at \
+     baobab \
      bsdgames \
      cdparanoia \
      checkinstall \

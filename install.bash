@@ -13,9 +13,9 @@ mkdir -p ~/.mozilla/
 
 
 if [[ $1 == "firefox" ]]; then
-    mkdir -p ~/.mozilla/firefox/*.default/chrome/
-    FIREFOX_CHROME=$(realpath ~/.mozilla/firefox/*.default/chrome/)
-    cp --remove-destination ${PWD}/firefox/userChrome.css "$FIREFOX_CHROME"
+    profile=$(realpath ~/.mozilla/firefox/*.default)
+    mkdir -p "$profile"/chrome/
+    cp --remove-destination ${PWD}/firefox/userChrome.css "$profile"/chrome/
     ln -sf ${PWD}/firefox/.keysnail.js ~
 else
     stow -R -t ~ "$@"
