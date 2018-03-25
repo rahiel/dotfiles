@@ -58,6 +58,7 @@ alias dd='dd status=progress'
 alias e='emacsclient -nw'
 alias em='emacsclient -c -n'
 alias eq='emacs -Q'
+alias emacsd='emacs --daemon'
 alias j='z'
 alias keys='xmodmap ~/.config/xmodmaprc'
 alias netrestart="sudo systemctl restart network-manager.service"
