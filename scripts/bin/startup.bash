@@ -1,10 +1,9 @@
 #!/bin/bash
-
+setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
+xmodmap ~/.config/xmodmaprc
 emacs --daemon
 # emacs --daemon && emacsclient --no-wait -c -e "(find-file \"~/Sync/Notes/todo.org\")"
-# setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
 ~/bin/clickpad
-xmodmap ~/.config/xmodmaprc
 numlockx on
 bluetooth off
 sleep 2.5

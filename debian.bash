@@ -50,7 +50,7 @@ sudo apt install -y \
      command-not-found \
      curl \
      dnsutils \
-     emacs25 emacs25-common-non-dfsg emacs-goodies-el \
+     emacs-gtk emacs-common-non-dfsg \
      filezilla \
      fonts-noto unifont fonts-font-awesome \
      gimp gimp-data-extras \
