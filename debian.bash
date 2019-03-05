@@ -83,6 +83,7 @@ sudo apt install -y \
      scrot \
      shellcheck \
      snapd \
+     source-highlight \
      stow \
      strace \
      syncthing \
@@ -105,7 +106,7 @@ sudo apt install -y \
 sudo apt install -y --no-install-recommends \
      devscripts \
      firejail firejail-profiles \
-     mat libimage-exiftool-perl \
+     mat2 libimage-exiftool-perl \
      sagemath
 
 # LaTeX
@@ -206,9 +207,9 @@ echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sud
 sudo apt update && sudo apt install -y signal-desktop
 
 # brave browser
-curl -s https://s3-us-west-2.amazonaws.com/brave-apt/keys.asc | sudo apt-key add -
-echo "deb [arch=amd64] https://s3-us-west-2.amazonaws.com/brave-apt jessie main" | sudo tee /etc/apt/sources.list.d/brave-jessie.list
-sudo apt update && sudo apt install -y brave
+curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
+echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ jessie main" | sudo tee /etc/apt/sources.list.d/brave-browser-release-jessie.list
+sudo apt update && sudo apt install -y brave-browser brave-keyring
 
 # enable user namespaces (https://superuser.com/questions/1094597/enable-user-namespaces-in-debian-kernel)
 echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/00-local-userns.conf

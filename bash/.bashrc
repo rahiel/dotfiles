@@ -100,6 +100,9 @@ export LESS_TERMCAP_se=$'\e[0m'        # reset reverse video
 export LESS_TERMCAP_us=$'\e[1;32m'     # begin underline
 export LESS_TERMCAP_ue=$'\e[0m'        # reset underline
 
+# less syntax highlighting (https://www.gnu.org/software/src-highlite/source-highlight.html#Using-source_002dhighlight-with-less)
+export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+
 # source other files
 . ~/.bash_fun
 . ~/.bash_priv
