@@ -16,8 +16,7 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=100000       # current session
-HISTFILESIZE=7000000
+export HISTSIZE=""  # infinite history (https://superuser.com/a/479727)
 
 # append and read new lines from hist after every command
 PROMPT_COMMAND="history -a; history -n"
@@ -73,6 +72,10 @@ PROMPT_COMMAND='EXIT_STATUS=$?; '$PROMPT_COMMAND
 # export PS1='\[$(tput sc; rightprompt; tput rc)\]left prompt > '
 
 # set prompt
+if ! hash pwds &> /dev/null; then
+    pwds() { pwd; }
+fi
+
 PROMPT_COMMAND=$PROMPT_COMMAND'; __git_ps1 "${debian_chroot:+($debian_chroot)}$(basename "$VIRTUAL_ENV") \[\e[38;5;126;1m\]$(pwds)\[\e[0m\]" " $(exit_prompt) "'
 
 # __git_ps1 from  /usr/lib/git-core/git-sh-prompt
@@ -101,30 +104,38 @@ export LESS_TERMCAP_us=$'\e[1;32m'     # begin underline
 export LESS_TERMCAP_ue=$'\e[0m'        # reset underline
 
 # less syntax highlighting (https://www.gnu.org/software/src-highlite/source-highlight.html#Using-source_002dhighlight-with-less)
-export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+if [[ -x "/usr/share/source-highlight/src-hilite-lesspipe.sh" ]]; then
+    export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+fi
+
+sourcy() {
+    [ -f "$1" ] && source "$1"
+}
 
 # source other files
-. ~/.bash_fun
-. ~/.bash_priv
+sourcy ~/.bash_fun
+sourcy ~/.bash_priv
 
 # z jumping
-. ~/.local/z/z.sh
+sourcy ~/.local/z/z.sh
 
 # fzf
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+sourcy ~/.fzf.bash
 
 # autoenv
-source ~/.local/bin/activate.sh
+sourcy ~/.local/bin/activate.sh
 
 # virtualenvwrapper; $PATH must be set before this
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Code
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export VIRTUALENVWRAPPER_VIRTUALENV=~/.local/bin/virtualenv
-source ~/.local/bin/virtualenvwrapper_lazy.sh
+sourcy ~/.local/bin/virtualenvwrapper_lazy.sh
+
+unset sourcy
 
 # haskell-stack completions
-eval "$(stack --bash-completion-script stack)"
+hash stack &> /dev/null && eval "$(stack --bash-completion-script stack)"
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
