@@ -51,6 +51,7 @@ sudo apt install -y \
      curl \
      dnsutils \
      emacs-gtk emacs-common-non-dfsg \
+     fd-find \
      filezilla \
      fonts-noto unifont fonts-font-awesome \
      gimp gimp-data-extras \
@@ -79,6 +80,7 @@ sudo apt install -y \
      qrencode \
      redshift-gtk \
      ricochet-im \
+     ripgrep \
      rsync \
      scrot \
      shellcheck \
@@ -256,7 +258,7 @@ npm install -g --prefix ~/.npm-global/ \
     typescript \
     webpack
 
-CRATES="pwds racer ripgrep fd-find"
+CRATES="pwds racer"
 for crate in $CRATES; do
     cargo install -f $crate
 done

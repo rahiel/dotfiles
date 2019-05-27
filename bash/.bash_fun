@@ -60,6 +60,7 @@ alias em='emacsclient -c -n'
 alias eq='emacs -Q'
 alias emacsd='emacs --daemon'
 alias j='z'
+alias fd='fdfind'
 alias keys='xmodmap ~/.config/xmodmaprc'
 alias netrestart="sudo systemctl restart network-manager.service"
 alias nocaps='setxkbmap -option ctrl:nocaps'
@@ -68,6 +69,7 @@ alias rg='rg -S'
 alias untar='tar xvf'
 alias webserver='python3 -m http.server'
 alias wget='wget -c'
+alias mpa='mpv --no-video'
 alias xdaliclock='xdaliclock -24 -builtin3 -fullscreen'
 
 # updates

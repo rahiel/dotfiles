@@ -160,5 +160,11 @@ export DEBFULLNAME="Rahiel Kasim"
 export DEBEMAIL="rahielkasim@gmail.com"
 export GPGKEY=6B5D2243
 
+# Fix for TRAMP (https://stackoverflow.com/a/8363532/4870246)
+if [[ $TERM == "dumb" ]]; then
+    PROMPT_COMMAND=""
+    PS1="> "
+fi
+
 # welcome message
 echo -e "\e[01;35m$SHELL\e[m on" "\e[01;37m$(date)\e[m"
