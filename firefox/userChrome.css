@@ -1,3 +1,9 @@
-#editBookmarkPanel {
+#editBMPanel_folderTree {
     height: 900px !important;
 }
+
+/* hide the native tabs */
+#TabsToolbar { visibility: collapse; }
+
+/* hide the sidebar header */
+#sidebar-header { visibility: collapse; }
