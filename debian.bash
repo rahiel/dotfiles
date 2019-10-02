@@ -10,14 +10,14 @@ fi
 echo "$USER  ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/passwordless
 
 SOURCES=$(cat << EOF
-deb http://httpredir.debian.org/debian buster main contrib non-free
-# deb-src http://httpredir.debian.org/debian buster main contrib non-free
+deb http://httpredir.debian.org/debian bullseye main contrib non-free
+# deb-src http://httpredir.debian.org/debian bullseye main contrib non-free
 
-deb http://httpredir.debian.org/debian buster-updates main contrib non-free
-# deb-src http://httpredir.debian.org/debian buster-updates main contrib non-free
+deb http://httpredir.debian.org/debian bullseye-updates main contrib non-free
+# deb-src http://httpredir.debian.org/debian bullseye-updates main contrib non-free
 
-deb http://security.debian.org/ buster/updates main contrib non-free
-# deb-src http://security.debian.org/ buster/updates main contrib non-free
+deb http://security.debian.org bullseye-security main contrib non-free
+# deb-src http://security.debian.org/ bullseye-security main contrib non-free
 
 deb http://httpredir.debian.org/debian unstable main contrib non-free
 EOF
@@ -26,7 +26,7 @@ echo "$SOURCES" | sudo tee /etc/apt/sources.list
 
 PREFERENCES=$(cat <<EOF
 Package: *
-Pin: release n=buster
+Pin: release n=bullseye
 Pin-Priority: 900
 
 Package: *
@@ -109,7 +109,7 @@ sudo apt install -y --no-install-recommends \
      devscripts \
      firejail firejail-profiles \
      mat2 libimage-exiftool-perl \
-     sagemath
+     # sagemath
 
 # LaTeX
 sudo apt install -y --no-install-recommends \
@@ -138,7 +138,6 @@ sudo apt install -y \
      ipython3 \
      isort \
      mypy \
-     pypy pypy-dev \
      python2.7-doc \
      python3-doc \
      python3-pip \
@@ -174,11 +173,7 @@ sudo apt install -y default-jdk
 sudo apt install -y ruby ruby-dev rubygems
 
 # AppArmor
-sudo apt -y install apparmor apparmor-profiles apparmor-utils apparmor-notify
-# https://bugs.debian.org/702030
-if ! grep -q apparmor /etc/default/grub; then
-    sudo perl -pi -e 's,GRUB_CMDLINE_LINUX="(.*)"$,GRUB_CMDLINE_LINUX="$1 apparmor=1 security=apparmor",' /etc/default/grub
-fi
+sudo apt -y install apparmor-profiles apparmor-utils apparmor-notify
 # Disable AppArmor for Thunderbird
 sudo ln -sf /etc/apparmor.d/usr.bin.thunderbird /etc/apparmor.d/disable
 sudo apparmor_parser -R /etc/apparmor.d/usr.bin.thunderbird || :

@@ -76,7 +76,7 @@ alias xdaliclock='xdaliclock -24 -builtin3 -fullscreen'
 alias debup='sudo apt update && sudo apt full-upgrade && sudo apt --purge autoremove'
 alias fzf_update='cd ~/.local/fzf && git pull && ./install --key-bindings --completion --no-update-rc && cd -'
 alias z_update='cd ~/.local/z && git pull && cd -'
-alias npm_update='npm -g update'
+alias npm_update='npm -g update --prefix ~/.npm-global/'
 alias pip_upgrade='pip3 install --upgrade -r ~/Sync/dotfiles/requirements.txt'
 
 debin() { dpkg --get-selections | grep "$1"; }
