@@ -92,7 +92,7 @@ sudo apt install -y \
      task-print-server \
      telegram-desktop \
      thunar-dropbox-plugin \
-     thunderbird xul-ext-compactheader xul-ext-torbirdy enigmail gnupg-curl \
+     thunderbird webext-compactheader enigmail gnupg-curl \
      tor torbrowser-launcher \
      transmission-gtk \
      tree \

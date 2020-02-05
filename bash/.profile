@@ -33,6 +33,7 @@ export RUST_SRC_PATH="$HOME/Code/rust/src"
 
 # gem
 export PATH="$HOME/.gem/ruby/2.3.0/bin:$PATH"
+export PATH="$HOME/.gem/ruby/2.5.0/bin:$PATH"
 
 # snap
 export PATH="/snap/bin:$PATH"
