@@ -574,6 +574,12 @@ you should place your code here."
   ;; autoenv files
   (add-to-list 'auto-mode-alist '(".env" . shell-script-mode))
 
+  ;; Disable version control to avoid delays (from tramp info)
+  (setq vc-ignore-dir-regexp
+        (format "\\(%s\\)\\|\\(%s\\)"
+                vc-ignore-dir-regexp
+                tramp-file-name-regexp))
+
   ;; web mode
   (defun my-web-mode-hook ()
     "Hooks for Web mode."

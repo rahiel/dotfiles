@@ -158,16 +158,17 @@ bar {
 bindsym $mod+m exec emacsclient -c
 bindsym $mod+n exec thunar
 bindsym $mod+Shift+f exec firejail firefox
-bindsym $mod+Shift+i exec firejail thunderbird
+bindsym $mod+Shift+i exec thunderbird
 bindsym $mod+Shift+t exec firejail telegram-desktop
 bindsym $mod+F8 exec emacsclient -nc -e '(find-file "~/Sync/Notes/todo.org")'
 
-assign [class="Firefox"] → 1
-assign [class="Thunderbird"] → 10
+assign [class="thunderbird"] → 10
 
 # shutdown/lock
 # adapted from: https://wiki.archlinux.org/index.php/I3#Shutdown.2C_reboot.2C_lock_screen
 set $Locker ~/bin/i3locker
+
+bindsym Control+Mod1+L exec --no-startup-id $Locker
 
 set $mode_system System (l)ock, (e) logout, (s)uspend, (h)ibernate, (r)eboot, (p)oweroff, screen (o)ff
 mode "$mode_system" {
@@ -205,6 +206,5 @@ exec --no-startup-id nm-applet
 exec --no-startup-id ~/bin/startup.bash
 exec --no-startup-id compton -b --backend glx --vsync opengl-swc
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id firejail dropbox start -i
 exec --no-startup-id unclutter
-exec --no-startup-id aa-notify -p -s 1 -w 60
+# exec --no-startup-id aa-notify -p -s 1 -w 60
