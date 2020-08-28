@@ -53,6 +53,9 @@ alias latexmk='latexmk -interaction=nonstopmode -pvc -pdf -pdflatex="pdflatex -s
 alias latexmk_err='latexmk -pvc -pdf -pdflatex="pdflatex -shell-escape %O %S"'
 alias pdflatex='pdflatex -shell-escape'
 
+# hugo
+alias hugo_server='hugo server --buildDrafts --buildFuture --disableFastRender'
+
 alias binds="bind -P | grep 'can be'"
 alias dd='dd status=progress'
 alias e='emacsclient -nw'
