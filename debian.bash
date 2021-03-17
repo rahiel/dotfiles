@@ -68,7 +68,6 @@ sudo apt install -y \
      libnotify-bin \
      libreoffice-pdfimport \
      liferea \
-     lintian \
      magic-wormhole \
      mosh \
      mpv \
@@ -79,12 +78,10 @@ sudo apt install -y \
      parallel \
      qrencode \
      redshift-gtk \
-     ricochet-im \
      ripgrep \
      rsync \
      scrot \
      shellcheck \
-     snapd \
      source-highlight \
      stow \
      strace \
@@ -92,7 +89,7 @@ sudo apt install -y \
      task-print-server \
      telegram-desktop \
      thunar-dropbox-plugin \
-     thunderbird webext-compactheader enigmail gnupg-curl \
+     thunderbird gpg-agent gnupg-curl \
      tor torbrowser-launcher \
      transmission-gtk \
      tree \
@@ -106,7 +103,6 @@ sudo apt install -y \
      zip
 
 sudo apt install -y --no-install-recommends \
-     devscripts \
      firejail firejail-profiles \
      mat2 libimage-exiftool-perl \
      # sagemath
@@ -124,11 +120,11 @@ sudo apt install -y --no-install-recommends \
 # i3 Desktop
 sudo apt install -y \
      arandr \
-     compton \
      feh \
      i3 dunst- \
      j4-dmenu-desktop \
      numlockx \
+     picom \
      unclutter
 sudo apt install -y --no-install-recommends lxappearance
 
@@ -147,30 +143,19 @@ sudo apt install -y \
 
 # Python Science
 sudo apt install -y \
-     jupyter-notebook \
      python3-matplotlib \
      python3-numpy \
-     python3-pandas \
-     python3-scipy \
-     python3-seaborn \
-     python3-sklearn
-sudo apt install -y --no-install-recommends python3-sympy python3-gmpy2 isympy3
+     python3-scipy
 
 # JavaScript
 sudo apt install -y nodejs-legacy npm
 
 # Haskell
-sudo apt install -y haskell-stack libncurses-dev
-sudo apt install -y --no-install-recommends hlint
+# sudo apt install -y haskell-stack libncurses-dev
+# sudo apt install -y --no-install-recommends hlint
 
 # Rust
 sudo apt install -y rustc rust-doc cargo
-
-# Java
-sudo apt install -y default-jdk
-
-# Ruby
-sudo apt install -y ruby ruby-dev rubygems
 
 # AppArmor
 sudo apt -y install apparmor-profiles apparmor-utils apparmor-notify
@@ -180,12 +165,6 @@ sudo apparmor_parser -R /etc/apparmor.d/usr.bin.thunderbird || :
 
 # grant user read permissions for many logs in /var/log/
 sudo adduser "$USER" adm
-
-# Firejail
-wget https://github.com/rahiel/firectl/releases/download/1.1.0/firectl_1.1.0-1_all.deb -O /tmp/firectl.deb
-sudo apt install -y /tmp/firectl.deb
-sudo firectl enable chromium dropbox evince firefox keepassx thunderbird transmission-gtk
-rm /tmp/firectl.deb
 
 # http://popcon.debian.org
 echo 'popularity-contest	popularity-contest/participate	boolean	true' | sudo debconf-set-selections
@@ -199,13 +178,15 @@ sudo ufw allow 22000/tcp && sudo ufw allow 21027/udp # Syncthing
 sudo ufw enable
 
 # signal-desktop
-curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
-echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee /etc/apt/sources.list.d/signal-xenial.list
+wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg
+sudo mv signal-desktop-keyring.gpg /usr/share/keyrings/
+echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main' |\
+  sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
 sudo apt update && sudo apt install -y signal-desktop
 
 # brave browser
 curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
-echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ jessie main" | sudo tee /etc/apt/sources.list.d/brave-browser-release-jessie.list
+echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 sudo apt update && sudo apt install -y brave-browser brave-keyring
 
 # enable user namespaces (https://superuser.com/questions/1094597/enable-user-namespaces-in-debian-kernel)
@@ -253,12 +234,10 @@ npm install -g --prefix ~/.npm-global/ \
     typescript \
     webpack
 
-CRATES="pwds racer"
+CRATES="pwds"
 for crate in $CRATES; do
     cargo install -f $crate
 done
-
-gem install --user-install --no-document fpm
 
 # fzf
 if [[ ! -d ~/.local/fzf ]]; then
@@ -277,6 +256,6 @@ if [[ ! -d ~/.local/LS_COLORS ]]; then
 fi
 
 # Spacemacs
-if [[ ! -d ~/.emacs.d ]]; then
-    git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-fi
+# if [[ ! -d ~/.emacs.d ]]; then
+#     git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+# fi

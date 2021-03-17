@@ -21,6 +21,9 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+# Emacs
+export PATH="$HOME/.emacs.d/bin:$PATH"
+
 # pip
 export PATH="$HOME/.local/bin:$PATH"
 

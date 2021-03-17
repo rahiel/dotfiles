@@ -204,7 +204,7 @@ exec --no-startup-id ~/bin/set-wallpaper
 # start programs
 exec --no-startup-id nm-applet
 exec --no-startup-id ~/bin/startup.bash
-exec --no-startup-id compton -b --backend glx --vsync opengl-swc
+exec --no-startup-id picom -b --backend glx --vsync
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id unclutter
 exec --no-startup-id thunar --daemon
