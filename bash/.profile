@@ -38,5 +38,8 @@ export RUST_SRC_PATH="$HOME/Code/rust/src"
 export PATH="$HOME/.gem/ruby/2.3.0/bin:$PATH"
 export PATH="$HOME/.gem/ruby/2.5.0/bin:$PATH"
 
-# snap
-export PATH="/snap/bin:$PATH"
+export XDG_SCREENSHOTS_DIR="$HOME/Pictures/Screenshots"
+
+# Wayland
+export MOZ_ENABLE_WAYLAND=1
+export QT_QPA_PLATFORM=wayland

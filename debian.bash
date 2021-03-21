@@ -38,7 +38,20 @@ echo "$PREFERENCES" | sudo tee /etc/apt/preferences
 
 sudo apt update
 sudo apt full-upgrade -y
-sudo apt install -y --purge --reinstall task-xfce-desktop firefox firefox-esr-
+
+# Sway desktop
+sudo apt install -y --no-install-recommends \
+     gammastep \
+     grimshot \
+     j4-dmenu-desktop \
+     mako-notifier \
+     qtwayland5 \
+     suckless-tools \
+     sway \
+     xwayland
+
+# i3 Desktop
+sudo apt install -y --no-install-recommends lxappearance
 
 sudo apt install -y \
      at \
@@ -51,8 +64,10 @@ sudo apt install -y \
      curl \
      dnsutils \
      emacs-gtk emacs-common-non-dfsg \
+     evince \
      fd-find \
      filezilla \
+     firefox \
      fonts-noto unifont fonts-font-awesome \
      gimp gimp-data-extras \
      git \
@@ -64,23 +79,22 @@ sudo apt install -y \
      imagemagick \
      jpegoptim \
      jq \
-     keepass2 \
+     keepassx \
      libnotify-bin \
-     libreoffice-pdfimport \
+     libreoffice-writer libreoffice-calc libreoffice-gtk3 \
      liferea \
      magic-wormhole \
      mosh \
      mpv \
      nautilus-dropbox \
+     network-manager-gnome \
      ntfs-3g \
      p7zip-full \
      pandoc \
      parallel \
      qrencode \
-     redshift-gtk \
      ripgrep \
      rsync \
-     scrot \
      shellcheck \
      source-highlight \
      stow \
@@ -88,15 +102,15 @@ sudo apt install -y \
      syncthing \
      task-print-server \
      telegram-desktop \
-     thunar-dropbox-plugin \
+     thunar thunar-archive-plugin \
      thunderbird gpg-agent gnupg-curl \
      tor torbrowser-launcher \
      transmission-gtk \
+     trash-cli \
      tree \
      tumbler-plugins-extra \
      unrar \
      whois \
-     wireshark \
      xclip \
      xournal \
      youtube-dl \
@@ -116,17 +130,6 @@ sudo apt install -y --no-install-recommends \
      texlive-publishers \
      texlive-science \
      texlive-xetex
-
-# i3 Desktop
-sudo apt install -y \
-     arandr \
-     feh \
-     i3 dunst- \
-     j4-dmenu-desktop \
-     numlockx \
-     picom \
-     unclutter
-sudo apt install -y --no-install-recommends lxappearance
 
 # Python
 sudo apt install -y \
