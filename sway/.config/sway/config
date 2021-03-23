@@ -52,6 +52,12 @@ exec_always ~/bin/sway-laptop-lid.bash
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
+set $locker ~/bin/swaylocker
+bindsym Control+Mod1+L exec --no-startup-id $locker
+
+exec swayidle -w \
+     timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
+
 ### Input configuration
 #
 # Example configuration:
@@ -85,7 +91,7 @@ seat * hide_cursor 9000
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+d exec j4-dmenu-desktop --dmenu="dmenu -i | xargs swaymsg exec --"
+    bindsym $mod+d exec j4-dmenu-desktop --dmenu="dmenu -i"
     bindsym $mod+shift+d exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
@@ -100,6 +106,23 @@ seat * hide_cursor 9000
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+    set $mode_system System (l)ock, (e)xit, (s)uspend, (h)ibernate, (r)eboot, (p)oweroff, screen (o)ff
+    mode "$mode_system" {
+        bindsym l exec $locker, mode "default"
+        bindsym e exec swaymsg exit, mode "default"
+        bindsym s exec $locker && systemctl suspend, mode "default"
+        bindsym Shift+s exec systemctl suspend, mode "default"
+        bindsym h exec $locker && systemctl hibernate, mode "default"
+        bindsym Shift+r exec systemctl reboot, mode "default"
+        bindsym Shift+p exec systemctl poweroff -i, mode "default"
+        bindsym o exec sleep 1 && pkill -USR1 swayidle, mode "default"
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+    }
+    bindsym $mod+Pause mode "$mode_system"
 #
 # Moving around:
 #
@@ -222,7 +245,8 @@ bar {
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %H:%M:%S'; do sleep 1; done
+    # status_command while date +'%Y-%m-%d %H:%M:%S'; do sleep 1; done
+    status_command i3status
 
     colors {
         statusline #ffffff
@@ -234,6 +258,17 @@ bar {
 include /etc/sway/config.d/*
 
 # Keybindings
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+bindsym $mod+Prior exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym $mod+Next exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym $mod+End exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+
 bindsym Print exec grimshot save area
 bindsym $mod+m exec emacsclient -c
 bindsym $mod+n exec thunar

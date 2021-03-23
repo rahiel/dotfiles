@@ -16,6 +16,9 @@ if [[ $1 == "firefox" ]]; then
     profile=$(realpath ~/.mozilla/firefox/*.default)
     mkdir -p "$profile"/chrome/
     cp --remove-destination ${PWD}/firefox/userChrome.css "$profile"/chrome/
+elif [[ $1 == "mako" ]]; then
+    mkdir -p ~/.config/mako/
+    cp mako/.config/mako/config ~/.config/mako/config
 else
     stow -R -t ~ "$@"
 fi

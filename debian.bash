@@ -43,11 +43,18 @@ sudo apt full-upgrade -y
 sudo apt install -y --no-install-recommends \
      gammastep \
      grimshot \
+     i3status \
+     imv \
      j4-dmenu-desktop \
      mako-notifier \
+     paper-icon-theme \
      qtwayland5 \
      suckless-tools \
      sway \
+     swayidle \
+     swaylock \
+     wl-clipboard \
+     xfce4-settings \
      xwayland
 
 # i3 Desktop
@@ -94,6 +101,7 @@ sudo apt install -y \
      parallel \
      qrencode \
      ripgrep \
+     ristretto \
      rsync \
      shellcheck \
      source-highlight \
@@ -102,7 +110,7 @@ sudo apt install -y \
      syncthing \
      task-print-server \
      telegram-desktop \
-     thunar thunar-archive-plugin \
+     thunar thunar-archive-plugin thunar-volman \
      thunderbird gpg-agent gnupg-curl \
      tor torbrowser-launcher \
      transmission-gtk \
@@ -111,7 +119,7 @@ sudo apt install -y \
      tumbler-plugins-extra \
      unrar \
      whois \
-     xclip \
+     xfce4-terminal \
      xournal \
      youtube-dl \
      zip
