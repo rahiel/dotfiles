@@ -64,9 +64,7 @@ alias eq='emacs -Q'
 alias emacsd='emacs --daemon'
 alias j='z'
 alias fd='fdfind'
-alias keys='setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl; xmodmap ~/.config/xmodmaprc'
 alias netrestart="sudo systemctl restart network-manager.service"
-alias nocaps='setxkbmap -option ctrl:nocaps'
 alias pls='sudo $(fc -nl -1)'
 alias rg='rg -S'
 alias untar='tar xvf'
@@ -97,28 +95,4 @@ rot13() {
     else
         tr "[a-m][n-z][A-M][N-Z]" "[n-z][a-m][N-Z][A-M]" < "$1"
     fi
-}
-
-# "repeat" command.  Like: repeat 10 echo foo
-repeat() {
-           local count="$1" i;
-           shift;
-           for i in $(_seq 1 "$count");
-           do
-               eval "$@";
-           done
-       }
-
-# Subfunction needed by `repeat'.
-_seq() {
-    local lower upper output;
-    lower=$1 upper=$2;
-
-    if [ $lower -ge $upper ]; then return; fi
-    while [ $lower -lt $upper ];
-    do
-        echo -n "$lower "
-        lower=$(($lower + 1))
-    done
-    echo "$lower"
 }

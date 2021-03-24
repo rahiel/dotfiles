@@ -36,6 +36,9 @@ EOF
            )
 echo "$PREFERENCES" | sudo tee /etc/apt/preferences
 
+# harden apt
+echo 'APT::Sandbox::Seccomp "true";' | sudo tee /etc/apt/apt.conf.d/40sandbox
+
 sudo apt update
 sudo apt full-upgrade -y
 
@@ -46,6 +49,7 @@ sudo apt install -y --no-install-recommends \
      i3status \
      imv \
      j4-dmenu-desktop \
+     lightdm lightdm-gtk-greeter \
      mako-notifier \
      paper-icon-theme \
      qtwayland5 \
