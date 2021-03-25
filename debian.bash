@@ -44,6 +44,7 @@ sudo apt full-upgrade -y
 
 # Sway desktop
 sudo apt install -y --no-install-recommends \
+     brightnessctl \
      gammastep \
      grimshot \
      i3status \
@@ -77,6 +78,7 @@ sudo apt install -y \
      emacs-gtk emacs-common-non-dfsg \
      evince \
      fd-find \
+     file-roller unar \
      filezilla \
      firefox \
      fonts-noto unifont fonts-font-awesome \
@@ -97,10 +99,8 @@ sudo apt install -y \
      magic-wormhole \
      mosh \
      mpv \
-     nautilus-dropbox \
      network-manager-gnome \
      ntfs-3g \
-     p7zip-full \
      pandoc \
      parallel \
      qrencode \
@@ -121,7 +121,6 @@ sudo apt install -y \
      trash-cli \
      tree \
      tumbler-plugins-extra \
-     unrar \
      whois \
      xfce4-terminal \
      xournal \

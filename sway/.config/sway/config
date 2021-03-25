@@ -78,6 +78,14 @@ input type:keyboard {
     xkb_options ctrl:nocaps
 }
 
+input type:touchpad {
+    click_method clickfinger
+    drag enabled
+    natural_scroll disabled
+    scroll_method two_finger
+    tap enabled
+}
+
 seat * hide_cursor 9000
 
 ### Key bindings
