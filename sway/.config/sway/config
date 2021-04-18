@@ -76,6 +76,7 @@ input type:keyboard {
     xkb_layout us
     xkb_variant altgr-intl
     xkb_options ctrl:nocaps
+    xkb_numlock enabled
 }
 
 input type:touchpad {
@@ -86,7 +87,7 @@ input type:touchpad {
     tap enabled
 }
 
-seat * hide_cursor 9000
+seat * hide_cursor 3000
 
 ### Key bindings
 #
@@ -294,4 +295,3 @@ exec mako
 exec ~/bin/startup.bash
 exec emacs --daemon
 exec thunar --daemon
-exec thunderbird

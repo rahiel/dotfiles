@@ -94,7 +94,7 @@ sudo apt install -y \
      jq \
      keepassx \
      libnotify-bin \
-     libreoffice-writer libreoffice-calc libreoffice-gtk3 \
+     libreoffice-writer libreoffice-calc libreoffice-impress libreoffice-gtk3 \
      liferea \
      magic-wormhole \
      mosh \
@@ -104,6 +104,7 @@ sudo apt install -y \
      pandoc \
      parallel \
      qrencode \
+     remmina \
      ripgrep \
      ristretto \
      rsync \
@@ -112,7 +113,6 @@ sudo apt install -y \
      stow \
      strace \
      syncthing \
-     task-print-server \
      telegram-desktop \
      thunar thunar-archive-plugin thunar-volman \
      thunderbird gpg-agent gnupg-curl \
