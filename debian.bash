@@ -46,11 +46,11 @@ sudo apt full-upgrade -y
 sudo apt install -y --no-install-recommends \
      brightnessctl \
      gammastep \
+     gdm3 \
      grimshot \
      i3status \
      imv \
      j4-dmenu-desktop \
-     lightdm lightdm-gtk-greeter \
      mako-notifier \
      paper-icon-theme \
      qtwayland5 \
@@ -64,6 +64,8 @@ sudo apt install -y --no-install-recommends \
 
 # i3 Desktop
 sudo apt install -y --no-install-recommends lxappearance
+
+sudo apt-get install -y -t unstable firefox
 
 sudo apt install -y \
      at \
@@ -80,7 +82,6 @@ sudo apt install -y \
      fd-find \
      file-roller unar \
      filezilla \
-     firefox \
      fonts-noto unifont fonts-font-awesome \
      gimp gimp-data-extras \
      git \
@@ -103,6 +104,7 @@ sudo apt install -y \
      ntfs-3g \
      pandoc \
      parallel \
+     pulseaudio pavucontrol \
      qrencode \
      remmina \
      ripgrep \
@@ -115,7 +117,7 @@ sudo apt install -y \
      syncthing \
      telegram-desktop \
      thunar thunar-archive-plugin thunar-volman \
-     thunderbird gpg-agent gnupg-curl \
+     thunderbird gpg-agent \
      tor torbrowser-launcher \
      transmission-gtk \
      trash-cli \
@@ -162,7 +164,7 @@ sudo apt install -y \
      python3-scipy
 
 # JavaScript
-sudo apt install -y nodejs-legacy npm
+sudo apt install -y nodejs npm
 
 # Haskell
 # sudo apt install -y haskell-stack libncurses-dev
@@ -195,7 +197,7 @@ sudo ufw enable
 wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg
 sudo mv signal-desktop-keyring.gpg /usr/share/keyrings/
 echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main' |\
-  sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
+  sudo tee /etc/apt/sources.list.d/signal-xenial.list
 sudo apt update && sudo apt install -y signal-desktop
 
 # brave browser
@@ -214,14 +216,15 @@ fi
 
 # microcode
 if grep -q GenuineIntel /proc/cpuinfo; then
-    sudo apt install intel-microcode
+    sudo apt install -y intel-microcode
 fi
 
 # command-not-found
 sudo update-command-not-found
 
-# LightDM autologin
-sudo sed -i "s/#autologin-user=/autologin-user=$USER/" /etc/lightdm/lightdm.conf
+# gdm3 autologin
+sudo sed -i "s/#  AutomaticLoginEnable = true/AutomaticLoginEnable = true/" /etc/gdm3/daemon.conf
+sudo sed -i "s/#  AutomaticLogin = user1/AutomaticLogin = $USER/" /etc/gdm3/daemon.conf
 
 # Grub shorter timeout
 sudo sed -i "s/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/" /etc/default/grub

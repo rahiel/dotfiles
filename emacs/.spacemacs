@@ -69,7 +69,6 @@ values."
                                       comment-dwim-2
                                       crux
                                       dockerfile-mode
-                                      intero
                                       nginx-mode
                                       paredit
                                       php-mode

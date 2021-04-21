@@ -63,6 +63,7 @@ alias em='emacsclient -c -n'
 alias eq='emacs -Q'
 alias emacsd='emacs --daemon'
 alias j='z'
+alias cjpeg='/opt/mozjpeg/bin/cjpeg'
 alias fd='fdfind'
 alias netrestart="sudo systemctl restart network-manager.service"
 alias pls='sudo $(fc -nl -1)'
