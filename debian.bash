@@ -10,14 +10,14 @@ fi
 echo "$USER  ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/passwordless
 
 SOURCES=$(cat << EOF
-deb http://httpredir.debian.org/debian bullseye main contrib non-free
-# deb-src http://httpredir.debian.org/debian bullseye main contrib non-free
+deb http://httpredir.debian.org/debian bookworm main contrib non-free
+# deb-src http://httpredir.debian.org/debian bookworm main contrib non-free
 
-deb http://httpredir.debian.org/debian bullseye-updates main contrib non-free
-# deb-src http://httpredir.debian.org/debian bullseye-updates main contrib non-free
+deb http://httpredir.debian.org/debian bookworm-updates main contrib non-free
+# deb-src http://httpredir.debian.org/debian bookworm-updates main contrib non-free
 
-deb http://security.debian.org bullseye-security main contrib non-free
-# deb-src http://security.debian.org/ bullseye-security main contrib non-free
+deb http://security.debian.org bookworm-security main contrib non-free
+# deb-src http://security.debian.org/ bookworm-security main contrib non-free
 
 deb http://httpredir.debian.org/debian unstable main contrib non-free
 EOF
@@ -26,7 +26,7 @@ echo "$SOURCES" | sudo tee /etc/apt/sources.list
 
 PREFERENCES=$(cat <<EOF
 Package: *
-Pin: release n=bullseye
+Pin: release n=bookworm
 Pin-Priority: 900
 
 Package: *
