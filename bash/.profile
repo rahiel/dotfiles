@@ -34,10 +34,6 @@ export PATH="$HOME/.npm-global/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export RUST_SRC_PATH="$HOME/Code/rust/src"
 
-# gem
-export PATH="$HOME/.gem/ruby/2.3.0/bin:$PATH"
-export PATH="$HOME/.gem/ruby/2.5.0/bin:$PATH"
-
 export XDG_SCREENSHOTS_DIR="$HOME/Pictures/Screenshots"
 
 # Wayland
