@@ -77,6 +77,7 @@ sudo apt install -y \
      command-not-found \
      curl \
      dnsutils \
+     docker.io \
      emacs-gtk emacs-common-non-dfsg \
      evince \
      fd-find \
@@ -139,6 +140,7 @@ sudo apt install -y --no-install-recommends \
      latexmk \
      python-pygments \
      texlive \
+     texlive-fonts-extra \
      texlive-generic-recommended \
      texlive-publishers \
      texlive-science \
@@ -181,6 +183,9 @@ sudo apparmor_parser -R /etc/apparmor.d/usr.bin.thunderbird || :
 
 # grant user read permissions for many logs in /var/log/
 sudo adduser "$USER" adm
+
+# allow docker commands
+sudo adduser "$USER" docker
 
 # http://popcon.debian.org
 echo 'popularity-contest	popularity-contest/participate	boolean	true' | sudo debconf-set-selections

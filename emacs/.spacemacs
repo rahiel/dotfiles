@@ -628,6 +628,11 @@ you should place your code here."
   ;; writegood mode
   (spacemacs/add-to-hooks 'writegood-mode '(text-mode-hook org-mode-hook latex-mode))
 
+  ;; use package.json indent of 2
+  (add-hook 'json-mode-hook
+            (lambda ()
+              (setq js-indent-level 2)))
+
   ;; bigger fill column for latex
   (add-hook 'LaTeX-mode-hook
             (lambda ()
