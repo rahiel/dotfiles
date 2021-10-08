@@ -134,6 +134,9 @@ sourcy ~/.local/bin/virtualenvwrapper_lazy.sh
 
 unset sourcy
 
+# pipx completions
+eval "$(register-python-argcomplete3 pipx)"
+
 # haskell-stack completions
 hash stack &> /dev/null && eval "$(stack --bash-completion-script stack)"
 

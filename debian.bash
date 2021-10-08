@@ -105,6 +105,7 @@ sudo apt install -y \
      ntfs-3g \
      pandoc \
      parallel \
+     pipx \
      pulseaudio pavucontrol \
      qrencode \
      remmina \
@@ -245,7 +246,9 @@ sudo -K
 systemctl --user enable syncthing.service
 systemctl --user start syncthing.service
 
-pip3 install -r https://github.com/rahiel/dotfiles/raw/master/requirements.txt
+cat ~/Sync/dotfiles/requirements.txt | while read line; do
+    pipx install $line
+done
 
 mkdir -p ~/.npm-global
 npm install -g --prefix ~/.npm-global/ npm

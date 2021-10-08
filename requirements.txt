@@ -1,4 +1,4 @@
 autoenv
 emacs-keys-everywhere
+poetry
 telegram-send
-virtualenvwrapper
