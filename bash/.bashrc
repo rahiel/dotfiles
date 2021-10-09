@@ -45,8 +45,14 @@ fi
 
 export EDITOR='emacsclient -c'
 
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    macos=1
+else
+    macos=0
+fi
+
 # use GNU coreutils on macOS
-PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+[[ $macos ]] && PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 ## default prompt
 # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
@@ -74,10 +80,7 @@ PROMPT_COMMAND='EXIT_STATUS=$?; '$PROMPT_COMMAND
 # }
 # export PS1='\[$(tput sc; rightprompt; tput rc)\]left prompt > '
 
-# set prompt
-if ! hash pwds &> /dev/null; then
-    pwds() { pwd; }
-fi
+[[ $macos ]] && . /usr/local/opt/git/etc/bash_completion.d/git-prompt.sh
 
 PROMPT_COMMAND=$PROMPT_COMMAND'; __git_ps1 "${debian_chroot:+($debian_chroot)}$(basename "$VIRTUAL_ENV") \[\e[38;5;126;1m\]$(pwds)\[\e[0m\]" " $(exit_prompt) "'
 
@@ -109,6 +112,8 @@ export LESS_TERMCAP_ue=$'\e[0m'        # reset underline
 # less syntax highlighting (https://www.gnu.org/software/src-highlite/source-highlight.html#Using-source_002dhighlight-with-less)
 if [[ -x "/usr/share/source-highlight/src-hilite-lesspipe.sh" ]]; then
     export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+elif [[ -x "/usr/local/bin/src-hilite-lesspipe.sh" ]]; then # macOS
+    export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 fi
 
 sourcy() {
@@ -138,7 +143,11 @@ sourcy ~/.local/bin/virtualenvwrapper_lazy.sh
 unset sourcy
 
 # pipx completions
-eval "$(register-python-argcomplete3 pipx)"
+if hash register-python-argcomplete3 &> /dev/null; then
+    eval "$(register-python-argcomplete3 pipx)"
+else
+    eval "$(register-python-argcomplete pipx)"
+fi
 
 # haskell-stack completions
 hash stack &> /dev/null && eval "$(stack --bash-completion-script stack)"
