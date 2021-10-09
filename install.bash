@@ -12,8 +12,12 @@ mkdir -p ~/.config
 mkdir -p ~/.mozilla/
 
 
-if [[ $1 == "firefox" ]]; then
-    profile=$(realpath ~/.mozilla/firefox/*.default-release)
+if [[ $1 == "firefox"* ]]; then
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        profile=$(realpath ~/Library/Application' 'Support/Firefox/Profiles/*.default-release)
+    else
+        profile=$(realpath ~/.mozilla/firefox/*.default-release)
+    fi
     mkdir -p "$profile"/chrome/
     cp --remove-destination ${PWD}/firefox/userChrome.css "$profile"/chrome/
 elif [[ $1 == "mako" ]]; then
