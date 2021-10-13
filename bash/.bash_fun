@@ -39,7 +39,11 @@ alias watch='watch -n1'
 
 # python
 alias py='python3'
-alias ipy='ipython3 -i'
+if [[ $macos ]]; then
+    alias ipy='ipython -i'
+else
+    alias ipy='ipython3 -i'
+fi
 alias mypy='mypy --check-untyped-defs --ignore-missing-imports'
 alias pylab='ipython3 -i --pylab auto'
 alias pyd='pydoc3'

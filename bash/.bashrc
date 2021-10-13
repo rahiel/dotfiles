@@ -142,6 +142,9 @@ sourcy ~/.local/bin/virtualenvwrapper_lazy.sh
 
 unset sourcy
 
+# pyenv
+eval "$(pyenv init -)"
+
 # pipx completions
 if hash register-python-argcomplete3 &> /dev/null; then
     eval "$(register-python-argcomplete3 pipx)"

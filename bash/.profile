@@ -39,3 +39,8 @@ export XDG_SCREENSHOTS_DIR="$HOME/Pictures/Screenshots"
 # Wayland
 export MOZ_ENABLE_WAYLAND=1
 export QT_QPA_PLATFORM=wayland
+
+# Pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"

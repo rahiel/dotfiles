@@ -21,6 +21,7 @@ brew install \
      coreutils \
      fd \
      git \
+     ipython \
      node \
      pipx \
      ripgrep \
@@ -28,7 +29,17 @@ brew install \
      source-highlight \
      stow
 
-pipx install poetry
+brew install \
+     mariadb \
+     mysql-client
+brew services start mariadb
+
+brew install redis
+brew services start redis
+
+brew install pyenv openssl readline sqlite3 xz zlib
+
+pipx install pipenv poetry
 
 cargo install pwds
 

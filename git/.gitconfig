@@ -2,8 +2,6 @@
 	email = rahielkasim@gmail.com
 	name = Rahiel Kasim
 	signingkey = F6829BE86B5D2243
-[core]
-	editor = emacsclient -c
 [push]
 	default = matching
 [transfer]
