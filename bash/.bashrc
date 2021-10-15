@@ -170,8 +170,10 @@ fi
 stty -ixon
 
 # language
-export LC_NUMERIC=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export LC_NUMERIC="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
 
 # Debian packaging
 export DEBFULLNAME="Rahiel Kasim"

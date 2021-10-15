@@ -21,18 +21,17 @@ brew install \
      coreutils \
      fd \
      git \
+     htop \
      ipython \
-     node \
+     node@14 \
      pipx \
      ripgrep \
      rust \
      source-highlight \
      stow
 
-brew install \
-     mariadb \
-     mysql-client
-brew services start mariadb
+brew install mariadb@10.3 mysql-client
+brew services start mariadb@10.3
 
 brew install redis
 brew services start redis
@@ -50,7 +49,8 @@ npm install -g --prefix ~/.npm-global/ \
     tern \
     tldr \
     typescript \
-    webpack
+    webpack \
+    yarn
 
 # fzf
 if [[ ! -d ~/.local/fzf ]]; then

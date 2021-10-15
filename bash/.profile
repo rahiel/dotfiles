@@ -27,8 +27,12 @@ export PATH="$HOME/.emacs.d/bin:$PATH"
 # pip
 export PATH="$HOME/.local/bin:$PATH"
 
-# npm
+# node.js
 export PATH="$HOME/.npm-global/bin:$PATH"
+export PATH="/usr/local/opt/node@14/bin:$PATH"
+
+# homebrew
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 
 # cargo / rust
 export PATH="$HOME/.cargo/bin:$PATH"

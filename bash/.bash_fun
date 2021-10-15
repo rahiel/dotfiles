@@ -71,6 +71,7 @@ alias cjpeg='/opt/mozjpeg/bin/cjpeg'
 [[ ! $macos ]] && alias fd='fdfind'
 alias netrestart="sudo systemctl restart network-manager.service"
 alias pls='sudo $(fc -nl -1)'
+alias pwgen='pwgen -1 --secure 40'
 alias rg='rg -S'
 alias untar='tar xvf'
 alias webserver='python3 -m http.server'
