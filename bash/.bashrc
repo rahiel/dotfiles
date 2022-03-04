@@ -46,9 +46,9 @@ fi
 export EDITOR='emacsclient -c'
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    macos=1
+    export macos=1
 else
-    macos=0
+    export macos=0
 fi
 
 # use GNU coreutils on macOS

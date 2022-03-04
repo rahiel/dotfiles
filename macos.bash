@@ -16,8 +16,14 @@ chsh -s /usr/local/bin/bash
 brew tap railwaycat/emacsmacport
 brew install --cask emacs-mac
 
-brew install --cask firefox
+brew install --cask \
+     chromium \
+     firefox \
+     ngrok \
+     telegram-desktop
+
 brew install \
+     aspell \
      coreutils \
      fd \
      git \
@@ -28,7 +34,9 @@ brew install \
      ripgrep \
      rust \
      source-highlight \
-     stow
+     stow \
+     qrencode \
+     tree
 
 brew install mariadb@10.3 mysql-client
 brew services start mariadb@10.3
