@@ -2,3 +2,4 @@ autoenv
 emacs-keys-everywhere
 poetry
 telegram-send
+yt-dlp

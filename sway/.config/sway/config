@@ -125,8 +125,8 @@ seat * hide_cursor 3000
     mode "$mode_system" {
         bindsym l exec $locker, mode "default"
         bindsym e exec swaymsg exit, mode "default"
-        bindsym s exec $locker && systemctl suspend, mode "default"
-        bindsym Shift+s exec systemctl suspend, mode "default"
+        bindsym s exec $locker && sleep 3 && systemctl suspend, mode "default"
+        bindsym Shift+s exec sleep 3 && systemctl suspend, mode "default"
         bindsym h exec $locker && systemctl hibernate, mode "default"
         bindsym Shift+r exec systemctl reboot, mode "default"
         bindsym Shift+p exec systemctl poweroff -i, mode "default"
@@ -292,7 +292,6 @@ bindsym $mod+Shift+t exec firejail telegram-desktop
 bindsym $mod+F8 exec emacsclient -nc -e '(find-file "~/Sync/Notes/todo.org")'
 
 assign [app_id="thunderbird"] → 10
-assign [app_id="telegramdesktop"] → 10
 
 # autostart
 exec nm-applet --indicator

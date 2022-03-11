@@ -69,6 +69,7 @@ sudo apt-get install -y -t unstable firefox
 
 sudo apt install -y \
      at \
+     audacity \
      baobab \
      bsdgames \
      cdparanoia \
@@ -105,6 +106,7 @@ sudo apt install -y \
      ntfs-3g \
      pandoc \
      parallel \
+     pdftk-java \
      pipx \
      pulseaudio pavucontrol \
      qrencode \
