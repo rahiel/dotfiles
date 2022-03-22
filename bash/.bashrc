@@ -52,7 +52,7 @@ else
 fi
 
 # use GNU coreutils on macOS
-[[ $macos ]] && PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+[[ $macos -eq 1 ]] && PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 ## default prompt
 # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
@@ -80,7 +80,7 @@ PROMPT_COMMAND='EXIT_STATUS=$?; '$PROMPT_COMMAND
 # }
 # export PS1='\[$(tput sc; rightprompt; tput rc)\]left prompt > '
 
-[[ $macos ]] && . /usr/local/opt/git/etc/bash_completion.d/git-prompt.sh
+[[ $macos -eq 1 ]] && . /usr/local/opt/git/etc/bash_completion.d/git-prompt.sh
 
 PROMPT_COMMAND=$PROMPT_COMMAND'; __git_ps1 "${debian_chroot:+($debian_chroot)}$(basename "$VIRTUAL_ENV") \[\e[38;5;126;1m\]$(pwds)\[\e[0m\]" " $(exit_prompt) "'
 

@@ -39,7 +39,7 @@ alias watch='watch -n1'
 
 # python
 alias py='python3'
-if [[ $macos ]]; then
+if [[ $macos -eq 1 ]]; then
     alias ipy='ipython -i'
 else
     alias ipy='ipython3 -i'
@@ -68,7 +68,7 @@ alias eq='emacs -Q'
 alias emacsd='emacs --daemon'
 alias j='z'
 alias cjpeg='/opt/mozjpeg/bin/cjpeg'
-[[ ! $macos ]] && alias fd='fdfind'
+[[ $macos -eq 0 ]] && alias fd='fdfind'
 alias netrestart="sudo systemctl restart network-manager.service"
 alias pls='sudo $(fc -nl -1)'
 alias pwgen='pwgen -1 --secure 40'
