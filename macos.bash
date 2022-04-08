@@ -48,7 +48,7 @@ brew services start redis
 
 brew install pyenv openssl readline sqlite3 xz zlib
 
-pipx install pipenv poetry
+pipx install flake8 pipenv poetry
 
 cargo install pwds
 

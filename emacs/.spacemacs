@@ -560,7 +560,7 @@ you should place your code here."
       (setq python-shell-interpreter "python3"))
     (message python-shell-interpreter))
   (global-set-key (kbd "<M-f3>") 'switch-python-version)
-  (defvaralias 'flycheck-python-flake8-executable 'python-shell-interpreter)
+  (setq flycheck-python-flake8-executable "flake8")
   (setq flycheck-flake8rc "~/.config/flake8")
   (add-hook 'anaconda-mode-hook
             (lambda ()
