@@ -26,16 +26,18 @@ brew install \
      aspell \
      coreutils \
      fd \
+     gh \
      git \
      htop \
      ipython \
+     isort \
      node@14 \
      pipx \
+     qrencode \
      ripgrep \
      rust \
      source-highlight \
      stow \
-     qrencode \
      tree
 
 brew install mariadb@10.3 mysql-client

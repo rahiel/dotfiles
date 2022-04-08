@@ -34,7 +34,7 @@ alias df="df -h"
 alias free="free -h"
 
 alias sudo='sudo ' # pass alias to sudo
-alias open='xdg-open'
+[[ $macos -eq 0 ]] && alias open='xdg-open'
 alias watch='watch -n1'
 
 # python
