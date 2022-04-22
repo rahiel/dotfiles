@@ -26,6 +26,7 @@ brew install \
      aspell \
      coreutils \
      fd \
+     ffmpeg \
      gh \
      git \
      htop \

@@ -16,8 +16,15 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
+echo "$OSTYPE" | grep -q -E '^darwin'
+if [ $? -eq 0 ]; then
+    export macos=1
+else
+    export macos=0
+fi
+
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
+if [ -d "$HOME/bin" ]; then
     PATH="$HOME/bin:$PATH"
 fi
 
@@ -41,8 +48,10 @@ export RUST_SRC_PATH="$HOME/Code/rust/src"
 export XDG_SCREENSHOTS_DIR="$HOME/Pictures/Screenshots"
 
 # Wayland
-export MOZ_ENABLE_WAYLAND=1
-export QT_QPA_PLATFORM=wayland
+if [ $macos -eq 0 ]; then
+    export MOZ_ENABLE_WAYLAND=1
+    export QT_QPA_PLATFORM=wayland
+fi
 
 # Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
