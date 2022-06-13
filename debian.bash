@@ -108,6 +108,7 @@ sudo apt install -y \
      parallel \
      pdftk-java \
      pipx \
+     poppler-utils \
      pulseaudio pavucontrol \
      qrencode \
      remmina \
