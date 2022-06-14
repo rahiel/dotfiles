@@ -6,8 +6,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "John Doe"
-      user-mail-address "john@doe.com")
+(setq user-full-name "Rahiel Kasim"
+      user-mail-address "rahielkasim@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -74,3 +74,34 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(map! "C-x b" #'consult-buffer
+      "C-x k" #'kill-current-buffer
+      "M-o" #'other-window
+      "C-x C-o" #'window-swap-states
+      "C-c <left>" #'winner-undo
+      "C-c <right>" #'winner-redo
+      "M-%" #'anzu-query-replace
+      "C-c r" #'anzu-query-replace-at-cursor
+      "C-c m" #'magit-status-here
+      "C-c d" #'define-word-at-point)
+
+;; Better C-w
+(require 'crux)
+(crux-with-region-or-line kill-region)    ; kill line if nothing is marked
+(crux-with-region-or-line kill-ring-save) ; copy line if nothing is marked
+
+;; Window move bindings, move focus to window with shift-{left,right,up,down}
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings))
+
+;; insert timestamps
+(defun insert-timestamp ()
+  (interactive)
+  (insert (format-time-string "%a %2d %b %Y %02H:%02M")))
+(defun insert-date ()
+  (interactive)
+  (insert (format-time-string "%2d %b %Y")))
+(defun insert-iso-date ()
+  (interactive)
+  (insert (format-time-string "%F")))

@@ -609,10 +609,6 @@ you should place your code here."
     (let ((sort-fold-case t))
       (call-interactively 'sort-lines)))
 
-  (defun connect-amolf ()
-    (interactive)
-    (dired "/ssh:kasim@drake.amolf.nl:~/"))
-
   ;; paredit, from http://www.emacswiki.org/emacs/ParEdit
   (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
   (add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
