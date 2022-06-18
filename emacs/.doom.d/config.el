@@ -84,7 +84,9 @@
       "M-%" #'anzu-query-replace
       "C-c r" #'anzu-query-replace-at-cursor
       "C-c m" #'magit-status-here
-      "C-c d" #'define-word-at-point)
+      "M-;" #'comment-dwim-2
+      "C-c d" #'define-word-at-point
+      "s-n" #'make-frame)
 
 ;; Better C-w
 (require 'crux)
@@ -105,3 +107,7 @@
 (defun insert-iso-date ()
   (interactive)
   (insert (format-time-string "%F")))
+
+;; web mode
+(setq web-mode-engines-alist
+      '(("django"    . "\\.html\\'")))

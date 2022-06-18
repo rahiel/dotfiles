@@ -50,4 +50,5 @@
 ;(unpin! t)
 
 (package! crux)
+(package! comment-dwim-2)
 (package! define-word)

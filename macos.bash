@@ -19,8 +19,10 @@ brew install --cask emacs-mac
 brew install --cask \
      chromium \
      firefox \
+     keepassxc \
      ngrok \
      telegram-desktop
+     tunnelblick \
 
 brew install \
      aspell \
@@ -28,6 +30,8 @@ brew install \
      fd \
      ffmpeg \
      gh \
+     kubernetes-cli \
+     watch \
      git \
      htop \
      ipython \
