@@ -86,7 +86,8 @@
       "C-c m" #'magit-status-here
       "M-;" #'comment-dwim-2
       "C-c d" #'define-word-at-point
-      "s-n" #'make-frame)
+      "s-n" #'make-frame
+      "C-c j" #'just-one-space)
 
 ;; Better C-w
 (require 'crux)

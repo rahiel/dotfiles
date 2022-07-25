@@ -52,3 +52,5 @@
 (package! crux)
 (package! comment-dwim-2)
 (package! define-word)
+
+(package! jenkinsfile-mode)
