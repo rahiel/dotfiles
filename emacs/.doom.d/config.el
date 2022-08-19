@@ -89,6 +89,8 @@
       "s-n" #'make-frame
       "C-c j" #'just-one-space)
 
+(auto-save-visited-mode 1)
+
 ;; Better C-w
 (require 'crux)
 (crux-with-region-or-line kill-region)    ; kill line if nothing is marked

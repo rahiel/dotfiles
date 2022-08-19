@@ -20,7 +20,9 @@ brew install --cask \
      chromium \
      firefox \
      keepassxc \
+     mpv \
      ngrok \
+     signal \
      telegram-desktop
      tunnelblick \
 
@@ -30,12 +32,11 @@ brew install \
      fd \
      ffmpeg \
      gh \
-     kubernetes-cli \
-     watch \
      git \
      htop \
      ipython \
      isort \
+     kubernetes-cli \
      node@14 \
      pipx \
      qrencode \
@@ -44,6 +45,7 @@ brew install \
      source-highlight \
      stow \
      tree
+     watch \
 
 brew install mariadb@10.3 mysql-client
 brew services start mariadb@10.3
