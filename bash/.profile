@@ -29,7 +29,7 @@ if [ -d "$HOME/bin" ]; then
 fi
 
 # Emacs
-export PATH="$HOME/.emacs.d/bin:$PATH"
+export PATH="$HOME/.config/emacs/bin:$PATH"
 
 # pip
 export PATH="$HOME/.local/bin:$PATH"

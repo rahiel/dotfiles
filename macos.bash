@@ -19,6 +19,7 @@ brew install --cask emacs-mac
 brew install --cask \
      chromium \
      firefox \
+     gimp \
      keepassxc \
      mpv \
      ngrok \
