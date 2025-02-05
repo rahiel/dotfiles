@@ -172,10 +172,6 @@ sudo apt install -y \
 # JavaScript
 sudo apt install -y nodejs npm
 
-# Haskell
-# sudo apt install -y haskell-stack libncurses-dev
-# sudo apt install -y --no-install-recommends hlint
-
 # Rust
 sudo apt install -y rustc rust-doc cargo
 
@@ -258,7 +254,6 @@ npm install -g --prefix ~/.npm-global/ npm
 npm install -g --prefix ~/.npm-global/ \
     eslint \
     tern \
-    tldr \
     typescript \
     webpack
 
@@ -282,8 +277,3 @@ fi
 if [[ ! -d ~/.local/LS_COLORS ]]; then
     git clone https://github.com/trapd00r/LS_COLORS.git ~/.local/LS_COLORS
 fi
-
-# Spacemacs
-# if [[ ! -d ~/.emacs.d ]]; then
-#     git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-# fi

@@ -18,14 +18,14 @@ brew install --cask emacs-mac
 
 brew install --cask \
      chromium \
+     discord \
      firefox \
      gimp \
      keepassxc \
      mpv \
      ngrok \
      signal \
-     telegram-desktop
-     tunnelblick \
+     telegram \
 
 brew install \
      aspell \
@@ -38,21 +38,16 @@ brew install \
      ipython \
      isort \
      kubernetes-cli \
-     node@14 \
+     mosh \
+     node@22 \
      pipx \
      qrencode \
      ripgrep \
      rust \
      source-highlight \
      stow \
-     tree
+     tree \
      watch \
-
-brew install mariadb@10.3 mysql-client
-brew services start mariadb@10.3
-
-brew install redis
-brew services start redis
 
 brew install pyenv openssl readline sqlite3 xz zlib
 
@@ -65,7 +60,6 @@ npm install -g --prefix ~/.npm-global/ npm
 npm install -g --prefix ~/.npm-global/ \
     eslint \
     tern \
-    tldr \
     typescript \
     webpack \
     yarn
