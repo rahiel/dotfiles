@@ -18,10 +18,13 @@ brew install --cask emacs-mac
 
 brew install --cask \
      chromium \
+     caddy \
      discord \
      firefox \
+     fish \
      gimp \
      keepassxc \
+     lsd \
      mpv \
      ngrok \
      signal \

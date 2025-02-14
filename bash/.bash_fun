@@ -48,17 +48,10 @@ alias mypy='mypy --check-untyped-defs --ignore-missing-imports'
 alias pylab='ipython3 -i --pylab auto'
 alias pyd='pydoc3'
 
-# haskell
-alias 'ghci'="stack exec ghci --"
-alias 'ghc'="stack exec ghc --"
-
 # LaTeX
 alias latexmk='latexmk -interaction=nonstopmode -pvc -pdf -pdflatex="pdflatex -shell-escape %O %S"'
 alias latexmk_err='latexmk -pvc -pdf -pdflatex="pdflatex -shell-escape %O %S"'
 alias pdflatex='pdflatex -shell-escape'
-
-# hugo
-alias hugo_server='hugo server --buildDrafts --buildFuture --disableFastRender'
 
 alias binds="bind -P | grep 'can be'"
 alias dd='dd status=progress'
